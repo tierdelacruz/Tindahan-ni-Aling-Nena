@@ -75,10 +75,6 @@
 
     - Spring Boot – Proposed Java framework for the backend.
 
-    - HTML – Structure of the web pages.
-
-    - CSS – Styling and layout of the website.
-
     - JavaScript – Frontend interaction and input handling.
 
     - File Storage – Saves and loads application data and tax rates.
