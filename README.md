@@ -1,21 +1,21 @@
 # Tindahan-ni-Aling-Nena
-**Project Title**
+*Project Title*
 
     Tindahan ni Aling Nena
 
-**Project Description**
+*Project Description*
 
     Tindahan ni Aling Nena is a web-based store management application developed using Java as its backend. It is designed to help micro and small business owners manage their products, sales, inventory, and customer utang.
 
     The system automatically calculates revenue, cost of goods sold, taxes, gross profit, net profit, and profit margin. It also provides a dashboard and reports to help store owners monitor their business performance and make better pricing and restocking decisions.
 
-**Project Problem**
+*Project Problem*
 
     Many neighborhood stores in the Philippines still record their sales and customer utang manually using notebooks. Store owners often experience difficulties tracking their actual profit, product performance, inventory, and unpaid customer balances.
 
     Manual calculations can also lead to errors and make it difficult to determine the correct selling prices and profitability of products. This project addresses these problems by providing an organized system that automatically records transactions and calculates important business information.
 
-**Project Objectives**
+*Project Objectives*
 
     # General Objective
 
@@ -41,7 +41,7 @@
 
         - Provide a responsive and user-friendly website.
 
-**Target Users**
+*Target Users*
 
     1. Micro, Small and Medium Entrepreneurs – Store owners and cashiers who need to manage products, sales, inventory, and customer utang.
 
@@ -49,7 +49,7 @@
 
     3. Online Shop Owners – Online sellers who want to record orders, monitor product prices and stock, and calculate their sales and profits.
 
-**Main Features**
+*Main Features*
 
     - User Accounts and Roles – Provides login functionality with separate owner and cashier permissions.
 
@@ -69,15 +69,11 @@
 
     - Responsive Web Interface – Provides a clean and user-friendly interface that works on computers and mobile browsers.
 
-**Technologies Used**
+*Technologies Used*
 
     - Java – Main programming language and backend logic.
 
     - Spring Boot – Proposed Java framework for the backend.
-
-    - HTML – Structure of the web pages.
-
-    - CSS – Styling and layout of the website.
 
     - JavaScript – Frontend interaction and input handling.
 
@@ -87,7 +83,7 @@
 
     - GitHub – Source code management and team collaboration.
 
-**Team Members and Roles**
+*Team Members and Roles*
 
 | Team Member | Role | Responsibilities |
 |---|---|---|
@@ -95,7 +91,7 @@
 | Nino Arjay M. Deomampo | Project Leader / Documentation | Coordinates tasks, monitors deadlines, maintains the README, testing documentation, screenshots, and assists in checking application functionality. |
 | Jules Dave A. Maningas | System Design Lead | Develops system requirements, class designs, UML diagrams, and overall application structure. |
 
-**OOP Concepts Demonstrated**
+*OOP Concepts Demonstrated*
 
     1. Classes and Objects – Represents products, inventory, sales, customers, users, tax rates, and sales reports through Java classes and objects.
 
@@ -112,4 +108,3 @@
     7. Exception Handling – Uses try-catch blocks and custom exceptions to handle invalid inputs, insufficient stock, overpayments, and invalid login attempts.
 
     8. Arrays and Data Handling – Uses ArrayList, arrays, loops, and sorting to manage products, sales history, customers, and users.
-
