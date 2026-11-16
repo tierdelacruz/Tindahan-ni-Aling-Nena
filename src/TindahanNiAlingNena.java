@@ -22,3 +22,19 @@ public class TindahanNiAlingNena {
     static int transactionNumber = 1003;
 
     static final String DATA_FILE = "tindahan_data.dat";
+
+      static synchronized void saveData() {
+        SaveState s = new SaveState();
+        s.products = products;
+        s.customers = customers;
+        s.users = users;
+        s.sales = sales;
+        s.taxPolicy = taxPolicy;
+        s.vatRate = vatRate;
+        s.percentageTaxRate = percentageTaxRate;
+        s.cigaretteRate = cigaretteRate;
+        s.spiritsRate = spiritsRate;
+        s.spiritsAdValorem = spiritsAdValorem;
+        s.wineRate = wineRate;
+        s.beerRate = beerRate;
+        s.transactionNumber = transactionNumber;
