@@ -56,3 +56,25 @@ public class TindahanNiAlingNena {
             System.out.println("Warning: could not save data (" + e.getMessage() + ")");
         }
     }
+
+    static boolean loadData() {
+        Path file = Paths.get(DATA_FILE);
+        if (!Files.exists(file)) return false;
+        try (ObjectInputStream in = new ObjectInputStream(
+                new BufferedInputStream(Files.newInputStream(file)))) {
+            SaveState s = (SaveState) in.readObject();
+            products = s.products;
+            customers = s.customers;
+            users = s.users;
+            sales = s.sales;
+            taxPolicy = s.taxPolicy;
+            vatRate = s.vatRate;
+            percentageTaxRate = s.percentageTaxRate;
+            cigaretteRate = s.cigaretteRate;
+            spiritsRate = s.spiritsRate;
+            spiritsAdValorem = s.spiritsAdValorem;
+            wineRate = s.wineRate;
+            beerRate = s.beerRate;
+            transactionNumber = s.transactionNumber;
+            System.out.println("Saved data loaded from " + DATA_FILE);
+            return true;
