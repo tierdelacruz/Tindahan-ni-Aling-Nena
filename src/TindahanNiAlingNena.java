@@ -78,3 +78,13 @@ public class TindahanNiAlingNena {
             transactionNumber = s.transactionNumber;
             System.out.println("Saved data loaded from " + DATA_FILE);
             return true;
+
+        } catch (Exception e) {
+            System.out.println("Could not read saved data (" + e.getMessage() + "). Starting with sample data.");
+            products = new ArrayList<>();
+            customers = new ArrayList<>();
+            users = new ArrayList<>();
+            sales = new ArrayList<>();
+            return false;
+        }
+    }
