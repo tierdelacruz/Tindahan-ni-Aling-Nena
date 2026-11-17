@@ -38,3 +38,21 @@ public class TindahanNiAlingNena {
         s.wineRate = wineRate;
         s.beerRate = beerRate;
         s.transactionNumber = transactionNumber;
+
+        Path target = Paths.get(DATA_FILE);
+        Path temp = Paths.get(DATA_FILE + ".tmp");
+        try {
+            try (ObjectOutputStream out = new ObjectOutputStream(
+                    new BufferedOutputStream(Files.newOutputStream(temp)))) {
+                out.writeObject(s);
+            }
+            try {
+                Files.move(temp, target, StandardCopyOption.REPLACE_EXISTING,
+                        StandardCopyOption.ATOMIC_MOVE);
+            } catch (AtomicMoveNotSupportedException e) {
+                Files.move(temp, target, StandardCopyOption.REPLACE_EXISTING);
+            }
+        } catch (IOException e) {
+            System.out.println("Warning: could not save data (" + e.getMessage() + ")");
+        }
+    }
