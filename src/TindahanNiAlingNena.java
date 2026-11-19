@@ -156,3 +156,39 @@ public class TindahanNiAlingNena {
         customers.add(new Customer("C002", "Aling Nida", "0918-987-6543"));
         customers.add(new Customer("C003", "Kuya Cardo", "0920-555-1234"));
     }
+    static void login() {
+        while (true) {
+            System.out.println("\n========== SELECT ACCOUNT ==========");
+            for (int i = 0; i < users.size(); i++) {
+                System.out.println((i + 1) + ". " + users.get(i).name + " - " + users.get(i).role);
+            }
+            System.out.println("0. Add New User");
+            int choice = readInt("Select account: ");
+            try {
+                if (choice < 0 || choice > users.size()) {
+                    throw new InvalidLoginException("Invalid account selection.");
+                }
+            } catch (InvalidLoginException e) {
+                System.out.println(e.getMessage());
+                continue;
+            }
+
+            if (choice == 0) {
+                if (activeUser != null && !isOwner()) {
+                    System.out.println("Only an Owner can add users.");
+                    continue;
+                }
+                String name = readText("Full name: ");
+                String role = readRole();
+                users.add(new User(name, role));
+                activeUser = users.get(users.size() - 1);
+                saveData();
+                return;
+            }
+            if (choice >= 1 && choice <= users.size()) {
+                activeUser = users.get(choice - 1);
+                return;
+            }
+            System.out.println("Invalid account.");
+        }
+    }
