@@ -192,3 +192,65 @@ public class TindahanNiAlingNena {
             System.out.println("Invalid account.");
         }
     }
+    
+        static String readRole() {
+        while (true) {
+            String role = readText("Role (OWNER/CASHIER): ").toUpperCase();
+            if (role.equals("OWNER") || role.equals("CASHIER")) return role;
+            System.out.println("Enter OWNER or CASHIER.");
+        }
+    }
+
+    static boolean isOwner() {
+        return activeUser != null && activeUser.role.equals("OWNER");
+    }
+
+    static void showDashboard() {
+        double totalSales = 0, totalCost = 0, totalProfit = 0, totalDebt = 0;
+        int[] quantities = new int[products.size()];
+        int bestIndex = -1;
+
+        for (Sale s : sales) {
+            totalSales += s.revenue;
+            totalCost += s.cost;
+            totalProfit += s.netProfit;
+            for (int i = 0; i < products.size(); i++) {
+                if (products.get(i).name.equals(s.productName)) quantities[i] += s.quantity;
+            }
+        }
+        for (Customer c : customers) totalDebt += c.balance;
+        for (int i = 0; i < quantities.length; i++)
+            if (bestIndex == -1 || quantities[i] > quantities[bestIndex]) bestIndex = i;
+
+        System.out.println("\n========== DASHBOARD & REPORTS ==========");
+        System.out.printf("Total Sales:       PHP %.2f%n", totalSales);
+        if (isOwner()) {
+            System.out.printf("Total Puhunan:     PHP %.2f%n", totalCost);
+            System.out.printf("Net Profit:        PHP %.2f%n", totalProfit);
+        } else {
+            System.out.println("Total Puhunan:     ***** (Owner access only)");
+            System.out.println("Net Profit:        ***** (Owner access only)");
+        }
+        System.out.printf("Total Utang:       PHP %.2f%n", totalDebt);
+        if (bestIndex >= 0 && quantities[bestIndex] > 0)
+            System.out.println("Best Seller:       " + products.get(bestIndex).name);
+        else
+            System.out.println("Best Seller:       None yet");
+
+        System.out.println("\nLOW STOCK ALERT (5 or fewer):");
+        boolean found = false;
+        for (Product p : products) {
+            if (p.stock <= 5) {
+                System.out.println("- " + p.name + " (" + p.stock + " left)");
+                found = true;
+            }
+        }
+        if (!found) System.out.println("No low-stock products.");
+
+        System.out.println("\nRECENT SALES:");
+        if (sales.isEmpty()) System.out.println("No sales recorded.");
+        for (Sale s : sales) {
+            System.out.printf("%s | %s | Qty: %d | PHP %.2f | %s%n",
+                    s.id, s.productName, s.quantity, s.revenue, s.saleType);
+        }
+    }
