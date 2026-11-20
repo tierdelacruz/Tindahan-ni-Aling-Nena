@@ -254,3 +254,59 @@ public class TindahanNiAlingNena {
                     s.id, s.productName, s.quantity, s.revenue, s.saleType);
         }
     }
+static void processSale() {
+        ArrayList<Product> cartProducts = new ArrayList<>();
+        ArrayList<Integer> cartQty = new ArrayList<>();
+        int choice;
+
+        do {
+            System.out.println("\n============= PRODUCT CATALOG =============");
+            showProducts(false);
+            System.out.println("0. Proceed to Checkout");
+            System.out.println("-1. Cancel Sale");
+            choice = readInt("Enter product number: ");
+
+            if (choice == -1) return;
+            if (choice == 0) break;
+            if (choice < 1 || choice > products.size()) {
+                System.out.println("Invalid product.");
+                continue;
+            }
+
+            Product p = products.get(choice - 1);
+            if (p.stock <= 0) {
+                System.out.println("Out of stock.");
+                continue;
+            }
+            int existing = cartProducts.indexOf(p);
+            int already = existing >= 0 ? cartQty.get(existing) : 0;
+            int qty = readInt("Quantity: ");
+            if (qty <= 0 || already + qty > p.stock) {
+                System.out.println("Invalid quantity or insufficient stock.");
+                continue;
+            }
+            if (existing >= 0) cartQty.set(existing, already + qty);
+            else {
+                cartProducts.add(p);
+                cartQty.add(qty);
+            }
+        } while (true);
+
+        if (cartProducts.isEmpty()) {
+            System.out.println("Cart is empty.");
+            return;
+        }
+
+        double subtotal = 0;
+        for (int i = 0; i < cartProducts.size(); i++)
+            subtotal += cartProducts.get(i).sellingPrice * cartQty.get(i);
+        System.out.printf("Subtotal: PHP %.2f%n", subtotal);
+
+        System.out.println("1. Regular Sale");
+        System.out.println("2. Discounted Sale");
+        System.out.println("3. Utang / Credit Sale");
+        int type = readInt("Sale type: ");
+        if (type < 1 || type > 3) {
+            System.out.println("Invalid sale type.");
+            return;
+        }
