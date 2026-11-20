@@ -310,3 +310,35 @@ static void processSale() {
             System.out.println("Invalid sale type.");
             return;
         }
+double discountRate = 0;
+        String discountReason = "";
+        Customer customer = null;
+        double downpayment = 0;
+
+        if (type == 2) {
+            discountRate = readDouble("Discount percentage (e.g. 20): ") / 100.0;
+            if (discountRate < 0 || discountRate > 1) {
+                System.out.println("Invalid discount.");
+                return;
+            }
+            discountReason = readText("Discount reason: ");
+        } else if (type == 3) {
+            customer = chooseCustomer();
+            if (customer == null) return;
+            downpayment = readDouble("Down payment: ");
+            if (downpayment < 0 || downpayment > subtotal) {
+                System.out.println("Invalid down payment.");
+                return;
+            }
+        }
+
+        double payable = subtotal * (1 - discountRate);
+        System.out.printf("Total payable: PHP %.2f%n", payable);
+        if (type != 3) {
+            double received = readDouble("Cash received: ");
+            if (received < payable) {
+                System.out.println("Insufficient payment. Sale cancelled.");
+                return;
+            }
+            System.out.printf("Change: PHP %.2f%n", received - payable);
+        }
