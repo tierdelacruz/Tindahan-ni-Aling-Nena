@@ -540,3 +540,13 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
         else System.out.println("Invalid choice.");
         System.out.println("Active tax policy: " + taxPolicy);
     }
+
+    static void taxRateSettings() {
+        if (!requireOwner()) return;
+        System.out.printf("Cigarette rate per pack: PHP %.2f%n", cigaretteRate);
+        System.out.printf("Spirits base rate: PHP %.2f%n", spiritsRate);
+        System.out.printf("Spirits ad valorem rate: %.0f%%%n", spiritsAdValorem * 100);
+        System.out.printf("Wine rate per liter: PHP %.2f%n", wineRate);
+        System.out.printf("Beer rate per liter: PHP %.2f%n", beerRate);
+        System.out.println("1. Update rates");
+        System.out.println("0. Keep current rates");
