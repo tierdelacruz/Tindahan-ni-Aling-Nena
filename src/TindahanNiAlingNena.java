@@ -342,3 +342,30 @@ double discountRate = 0;
             }
             System.out.printf("Change: PHP %.2f%n", received - payable);
         }
+String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
+        String cashier = activeUser.name + " (" + activeUser.role + ")";
+        for (int i = 0; i < cartProducts.size(); i++) {
+            Product p = cartProducts.get(i);
+            int qty = cartQty.get(i);
+            p.stock -= qty;
+            double revenue = p.sellingPrice * qty * (1 - discountRate);
+            double tax = calculateTax(revenue, p.costPrice * qty);
+            double paid = type == 3 ? Math.min(downpayment, revenue) : revenue;
+            Sale sale = new Sale("S" + transactionNumber++, p, qty, saleType, cashier,
+                    revenue, tax, paid, customer == null ? "" : customer.name);
+            sales.add(sale);
+            if (customer != null) customer.balance += sale.balance;
+            printReceipt(sale, discountReason);
+        }
+        saveData();
+    }
+
+    static double calculateTax(double revenue, double cost) {
+        if (taxPolicy.equals("VAT")) {
+            double outputVat = revenue - (revenue / (1 + vatRate));
+            double inputVat = cost - (cost / (1 + vatRate));
+            return outputVat - inputVat;
+        }
+        if (taxPolicy.equals("PERCENTAGE")) return revenue * percentageTaxRate;
+        return 0;
+    }
