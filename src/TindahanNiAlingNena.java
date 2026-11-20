@@ -550,3 +550,12 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
         System.out.printf("Beer rate per liter: PHP %.2f%n", beerRate);
         System.out.println("1. Update rates");
         System.out.println("0. Keep current rates");
+        if (readInt("Choose: ") == 1) {
+            cigaretteRate = readDouble("Cigarette rate: ");
+            spiritsRate = readDouble("Spirits base rate: ");
+            spiritsAdValorem = readDouble("Spirits ad valorem percentage: ") / 100;
+            wineRate = readDouble("Wine rate: ");
+            beerRate = readDouble("Beer rate: ");
+            System.out.println("Tax rates updated.");
+        }
+    }
