@@ -467,3 +467,62 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
         products.add(p);
         System.out.println("Product added.");
     }
+
+    static void editProduct() {
+        if (!requireOwner()) return;
+        Product p = findProduct(readText("Product ID to edit: "));
+        if (p == null) {
+            System.out.println("Product not found.");
+            return;
+        }
+        p.name = readText("New name: ");
+        p.costPrice = readDouble("New cost price: ");
+        p.sellingPrice = readDouble("New selling price: ");
+        p.stock = readInt("New stock quantity: ");
+        System.out.println("Product updated.");
+    }
+
+    static void deleteProduct() {
+        if (!requireOwner()) return;
+        Product p = findProduct(readText("Product ID to delete: "));
+        if (p == null) System.out.println("Product not found.");
+        else {
+            products.remove(p);
+            System.out.println("Product deleted.");
+        }
+    }
+
+    static void restockProduct() {
+        Product p = findProduct(readText("Product ID to restock: "));
+        if (p == null) System.out.println("Product not found.");
+        else {
+            int qty = readInt("Quantity to add: ");
+            if (qty <= 0) System.out.println("Enter a positive quantity.");
+            else {
+                p.stock += qty;
+                System.out.println("Stock updated. New stock: " + p.stock);
+            }
+        }
+    }
+
+    static void utangMenu() {
+        int choice;
+        do {
+            System.out.println("\n============== UTANG TRACKER ==============");
+            System.out.println("1. View Customers and Balances");
+            System.out.println("2. Register Customer");
+            System.out.println("3. Record Customer Payment");
+            System.out.println("4. View Credit Sales");
+            System.out.println("0. Back");
+            choice = readInt("Choose: ");
+            switch (choice) {
+                case 1: showCustomers(); break;
+                case 2: addCustomer(); break;
+                case 3: recordPayment(); break;
+                case 4: showCreditSales(); break;
+                case 0: break;
+                default: System.out.println("Invalid choice.");
+            }
+            saveData();
+        } while (choice != 0);
+    }
