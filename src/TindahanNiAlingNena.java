@@ -526,3 +526,17 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
             saveData();
         } while (choice != 0);
     }
+}
+
+    static void changeTaxPolicy() {
+        if (!requireOwner()) return;
+        System.out.println("1. 12% VAT");
+        System.out.println("2. 3% Percentage Tax");
+        System.out.println("3. No Tax");
+        int choice = readInt("Choose tax policy: ");
+        if (choice == 1) taxPolicy = "VAT";
+        else if (choice == 2) taxPolicy = "PERCENTAGE";
+        else if (choice == 3) taxPolicy = "NONE";
+        else System.out.println("Invalid choice.");
+        System.out.println("Active tax policy: " + taxPolicy);
+    }
