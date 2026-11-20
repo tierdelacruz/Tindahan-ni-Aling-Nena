@@ -390,3 +390,80 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
         }
         System.out.println("=========================================");
     }
+
+    static void inventoryMenu() {
+        int choice;
+        do {
+            System.out.println("\n========== INVENTORY MANAGEMENT ==========");
+            System.out.println("1. View Products");
+            System.out.println("2. Search Product");
+            System.out.println("3. Add Product (Owner)");
+            System.out.println("4. Edit Product (Owner)");
+            System.out.println("5. Delete Product (Owner)");
+            System.out.println("6. Restock (+10)");
+            System.out.println("0. Back");
+            choice = readInt("Choose: ");
+            switch (choice) {
+                case 1: showProducts(true); break;
+                case 2: searchProduct(); break;
+                case 3: addProduct(); break;
+                case 4: editProduct(); break;
+                case 5: deleteProduct(); break;
+                case 6: restockProduct(); break;
+                case 0: break;
+                default: System.out.println("Invalid choice.");
+            }
+            saveData();
+        } while (choice != 0);
+    }
+
+    static void showProducts(boolean showCost) {
+        System.out.println("\nID | Product | Category | Selling | Stock" +
+                (showCost && isOwner() ? " | Cost | Profit" : ""));
+        for (int i = 0; i < products.size(); i++) {
+            Product p = products.get(i);
+            System.out.printf("%d. %s | %s | %s | %.2f | %d",
+                    i + 1, p.id, p.name, p.category, p.sellingPrice, p.stock);
+            if (showCost && isOwner())
+                System.out.printf(" | %.2f | %.2f", p.costPrice, p.unitProfit());
+            System.out.println();
+        }
+    }
+
+    static void searchProduct() {
+        String key = readText("Enter product name or ID: ").toLowerCase();
+        boolean found = false;
+        for (Product p : products) {
+            if (p.name.toLowerCase().contains(key) || p.id.toLowerCase().contains(key)) {
+                System.out.println(p.id + " | " + p.name + " | Stock: " + p.stock);
+                found = true;
+            }
+        }
+        if (!found) System.out.println("No matching product.");
+    }
+    
+    static void addProduct() {
+        if (!requireOwner()) return;
+        String id = readText("Product ID: ");
+        if (findProduct(id) != null) {
+            System.out.println("Product ID already exists.");
+            return;
+        }
+        String name = readText("Product name: ");
+        String category = readText("Category (Ordinary/CigarettePack/DistilledSpirit/Wine/FermentedLiquor): ");
+        double cost = readDouble("Cost price: ");
+        double selling = readDouble("Selling price: ");
+        int stock = readInt("Initial stock: ");
+        if (cost < 0 || selling < 0 || stock < 0) {
+            System.out.println("Values cannot be negative.");
+            return;
+        }
+        Product p = new Product(id, name, category, cost, selling, stock);
+        if (category.equals("CigarettePack")) p.packSize = readInt("Pack size (sticks): ");
+        if (category.equals("DistilledSpirit") || category.equals("Wine") || category.equals("FermentedLiquor")) {
+            p.volumeLiters = readDouble("Volume in liters: ");
+        }
+        if (category.equals("DistilledSpirit")) p.alcoholPercent = readDouble("Alcohol percentage: ");
+        products.add(p);
+        System.out.println("Product added.");
+    }
