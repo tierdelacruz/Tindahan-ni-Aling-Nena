@@ -369,3 +369,24 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
         if (taxPolicy.equals("PERCENTAGE")) return revenue * percentageTaxRate;
         return 0;
     }
+    static void printReceipt(Sale s, String reason) {
+        System.out.println("\n============= SALES RECEIPT =============");
+        System.out.println("Tindahan ni Aling Nena");
+        System.out.println("Transaction: " + s.id);
+        System.out.println("Date: " + s.date);
+        System.out.println("Cashier: " + s.cashier);
+        System.out.println("Product: " + s.productName);
+        System.out.println("Quantity: " + s.quantity);
+        System.out.printf("Revenue: PHP %.2f%n", s.revenue);
+        System.out.println("Sale type: " + s.saleType);
+        if (!reason.isEmpty()) System.out.println("Discount reason: " + reason);
+        System.out.println("Tax policy: " + taxPolicy);
+        System.out.printf("Estimated tax: PHP %.2f%n", s.tax);
+        if (isOwner()) System.out.printf("Net profit: PHP %.2f%n", s.netProfit);
+        if (!s.customerName.isEmpty()) {
+            System.out.println("Customer: " + s.customerName);
+            System.out.printf("Paid: PHP %.2f%n", s.amountPaid);
+            System.out.printf("Remaining utang: PHP %.2f%n", s.balance);
+        }
+        System.out.println("=========================================");
+    }
