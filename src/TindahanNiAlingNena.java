@@ -598,3 +598,14 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
             }
         }
     }
+
+    static double readDouble(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                return Double.parseDouble(input.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid amount.");
+            }
+        }
+    }
