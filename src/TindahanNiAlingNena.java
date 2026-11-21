@@ -559,3 +559,14 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
             System.out.println("Tax rates updated.");
         }
     }
+static Customer chooseCustomer() {
+        if (customers.isEmpty()) {
+            System.out.println("No customers registered.");
+            return null;
+        }
+        showCustomers();
+        String id = readText("Enter customer ID: ");
+        Customer c = findCustomer(id);
+        if (c == null) System.out.println("Customer not found.");
+        return c;
+    }
