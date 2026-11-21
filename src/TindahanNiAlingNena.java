@@ -559,7 +559,7 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
             System.out.println("Tax rates updated.");
         }
     }
-static Customer chooseCustomer() {
+    static Customer chooseCustomer() {
         if (customers.isEmpty()) {
             System.out.println("No customers registered.");
             return null;
@@ -569,4 +569,21 @@ static Customer chooseCustomer() {
         Customer c = findCustomer(id);
         if (c == null) System.out.println("Customer not found.");
         return c;
+    }
+   static Product findProduct(String id) {
+        for (Product p : products) if (p.id.equalsIgnoreCase(id)) return p;
+        return null;
+    }
+
+    static Customer findCustomer(String id) {
+        for (Customer c : customers) if (c.id.equalsIgnoreCase(id)) return c;
+        return null;
+    }
+
+    static boolean requireOwner() {
+        if (!isOwner()) {
+            System.out.println("Permission denied. Owner access only.");
+            return false;
+        }
+        return true;
     }
