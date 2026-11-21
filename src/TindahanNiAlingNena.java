@@ -609,3 +609,9 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
             }
         }
     }
+
+     static String readText(String prompt) {
+        System.out.print(prompt);
+        return input.nextLine().trim();
+    }
+}
