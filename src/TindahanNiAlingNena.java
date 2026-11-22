@@ -526,8 +526,136 @@ String saleType = type == 1 ? "REGULAR" : type == 2 ? "DISCOUNTED" : "CREDIT";
             saveData();
         } while (choice != 0);
     }
-}
 
+    
+    static void settingsMenu() {
+        int choice;
+
+        do {
+            System.out.println("\n========== SETTINGS ==========");
+            System.out.println("1. Change Tax Policy");
+            System.out.println("2. Tax Rate Settings");
+            System.out.println("0. Back");
+
+            choice = readInt("Choose: ");
+
+            switch (choice) {
+                case 1:
+                    changeTaxPolicy();
+                    break;
+                case 2:
+                    taxRateSettings();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+            saveData();
+
+        } while (choice != 0);
+    }
+
+    static void showCustomers() {
+        System.out.println("\n========== CUSTOMER LIST ==========");
+
+        if (customers.isEmpty()) {
+            System.out.println("No customers registered.");
+            return;
+        }
+
+        for (Customer c : customers) {
+            System.out.printf("%s | %s | Balance: PHP %.2f%n",
+                    c.id, c.name, c.balance);
+        }
+    }
+
+    static void addCustomer() {
+        String id = readText("Customer ID: ");
+
+        if (findCustomer(id) != null) {
+            System.out.println("Customer ID already exists.");
+            return;
+        }
+
+        String name = readText("Customer name: ");
+        String phone = readText("Contact number: ");
+
+        customers.add(new Customer(id, name, phone));
+
+        System.out.println("Customer registered successfully.");
+        saveData();
+    }
+
+    static void recordPayment() {
+        Customer c = chooseCustomer();
+
+        if (c == null) {
+            return;
+        }
+
+        System.out.printf("Current balance: PHP %.2f%n", c.balance);
+
+        if (c.balance <= 0) {
+            System.out.println("This customer has no outstanding balance.");
+            return;
+        }
+
+        double payment = readDouble("Payment amount: ");
+
+        if (payment <= 0 || payment > c.balance) {
+            System.out.println("Invalid payment amount.");
+            return;
+        }
+
+        double remainingPayment = payment;
+
+        for (Sale s : sales) {
+            if (s.saleType.equals("CREDIT")
+                    && s.customerName.equalsIgnoreCase(c.name)
+                    && s.balance > 0) {
+
+                double applied = Math.min(remainingPayment, s.balance);
+
+                s.amountPaid += applied;
+                s.balance -= applied;
+                remainingPayment -= applied;
+
+                if (remainingPayment <= 0) {
+                    break;
+                }
+            }
+        }
+
+        c.balance -= payment;
+
+        System.out.printf("Payment recorded: PHP %.2f%n", payment);
+        System.out.printf("Remaining balance: PHP %.2f%n", c.balance);
+
+        saveData();
+    }
+
+    static void showCreditSales() {
+        System.out.println("\n========== CREDIT SALES ==========");
+
+        boolean found = false;
+
+        for (Sale s : sales) {
+            if (s.saleType.equals("CREDIT")) {
+                System.out.printf(
+                        "%s | Customer: %s | Product: %s | Remaining: PHP %.2f%n",
+                        s.id, s.customerName, s.productName, s.balance
+                );
+
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No credit sales recorded.");
+        }
+    }
     static void changeTaxPolicy() {
         if (!requireOwner()) return;
         System.out.println("1. 12% VAT");
