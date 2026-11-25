@@ -124,24 +124,24 @@ Read the receipt.
 Add a product (Main Menu → 3 → 3, Owner only)
 Enter the product details when asked.
 
-4.Restock (Main Menu → 3 → 6)
+4. Restock (Main Menu → 3 → 6)
 Choose the product. It adds 10 to stock.
 
-5.Register a customer (Main Menu → 4 → 2)
+5. Register a customer (Main Menu → 4 → 2)
 Enter the name and contact number.
 
-6.Record an utang payment (Main Menu → 4 → 3)
+6. Record an utang payment (Main Menu → 4 → 3)
 Choose the customer.
 Enter the payment amount.
 
-7.View reports (Main Menu → 1)
+7. View reports (Main Menu → 1)
 Read the dashboard.
 
-8.Change tax settings (Main Menu → 5, Owner only)
+8. Change tax settings (Main Menu → 5, Owner only)
 Type 1 to change the tax policy, or 2 to change the tax rates.
 Switch user
 
-9.Main Menu → 6, then choose an account.
+9. Main Menu → 6, then choose an account.
 Exit
 Type 0 at the Main Menu.
 # UML Diagram
