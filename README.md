@@ -54,7 +54,7 @@ Tindahan ni Aling Nena is a web-based store management application developed usi
 
     3. Online Shop Owners – Online sellers who want to record orders, monitor product prices and stock, and calculate their sales and profits.
 
-*Main Features*
+#Main Features
 
  - User Accounts and Roles – Provides login functionality with separate owner and cashier permissions.
 
@@ -89,7 +89,7 @@ Tindahan ni Aling Nena is a web-based store management application developed usi
     - GitHub – Source code management and team collaboration.
 
 
-*OOP Concepts Demonstrated*
+#OOP Concepts Demonstrated
 
   1. Classes and Objects – Represents products, inventory, sales, customers, users, tax rates, and sales reports through Java classes and objects.
 
@@ -109,7 +109,7 @@ Tindahan ni Aling Nena is a web-based store management application developed usi
 
 <img width="7436" height="4140" alt="diagram" src="https://github.com/user-attachments/assets/0d944cbc-0fe3-4e77-9e99-84ac1ee18156" />
 
-*Team Members and Roles*
+#Team Members and Roles
 
 | Team Member | Role | Responsibilities |
 |---|---|---|
@@ -117,6 +117,6 @@ Tindahan ni Aling Nena is a web-based store management application developed usi
 | Nino Arjay M. Deomampo | Project Leader / Documentation | Coordinates tasks, monitors deadlines, maintains the README, testing documentation, screenshots, and assists in checking application functionality. |
 | Jules Dave A. Maningas | System Design Lead | Develops system requirements, class designs, UML diagrams, and overall application structure. |
 
-*Thank you Message*
+#Thank you Message
 
 On behalf of DDM, this journey has been a fun and knowledge driven. We have traversed paths we never expected to encounter and we learned a lot from it. With hearts full of joy, kindly accept this message of gratitude and thanksgiving.
