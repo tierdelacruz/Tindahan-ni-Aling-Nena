@@ -117,5 +117,6 @@ Tindahan ni Aling Nena is a web-based store management application developed usi
 | Nino Arjay M. Deomampo | Project Leader / Documentation | Coordinates tasks, monitors deadlines, maintains the README, testing documentation, screenshots, and assists in checking application functionality. |
 | Jules Dave A. Maningas | System Design Lead | Develops system requirements, class designs, UML diagrams, and overall application structure. |
 
-Thank you Message
- On behalf of DDM, this journey has been a fun and knowledge driven. We have traversed paths we never expected to encounter and we learned a lot from it. With hearts full of joy, kindly accept this message of gratitude and thanksgiving.
+*Thank you Message*
+
+On behalf of DDM, this journey has been a fun and knowledge driven. We have traversed paths we never expected to encounter and we learned a lot from it. With hearts full of joy, kindly accept this message of gratitude and thanksgiving.
