@@ -104,6 +104,56 @@ Tindahan ni Aling Nena is a web-based store management application developed usi
 
   8. Arrays and Data Handling – Uses ArrayList, arrays, loops, and sorting to manage products, sales history, customers, and users.
 
+# How to run the program
+Log in
+
+Type 1 (Owner) or 2 (Cashier), then press Enter.
+
+Process a sale (Main Menu → 2)
+
+Type a product number, then the quantity.
+Repeat for more products.
+Type 0 to check out.
+Type the sale type: 1 Regular, 2 Discounted, or 3 Utang.
+For Discounted, enter the discount percentage, then the reason.
+For Utang, choose a customer, then enter the down payment.
+For Regular or Discounted, enter the cash received.
+Read the receipt.
+
+To cancel a sale, type -1 at the product list.
+
+Add a product (Main Menu → 3 → 3, Owner only)
+
+Enter the product details when asked.
+
+Restock (Main Menu → 3 → 6)
+
+Choose the product. It adds 10 to stock.
+
+Register a customer (Main Menu → 4 → 2)
+
+Enter the name and contact number.
+
+Record an utang payment (Main Menu → 4 → 3)
+
+Choose the customer.
+Enter the payment amount.
+
+View reports (Main Menu → 1)
+
+Read the dashboard.
+
+Change tax settings (Main Menu → 5, Owner only)
+
+Type 1 to change the tax policy, or 2 to change the tax rates.
+
+Switch user
+
+Main Menu → 6, then choose an account.
+
+Exit
+
+Type 0 at the Main Menu.
 # UML Diagram
 
 <img width="7436" height="4140" alt="diagram" src="https://github.com/user-attachments/assets/0d944cbc-0fe3-4e77-9e99-84ac1ee18156" />
