@@ -1,7 +1,4 @@
 # Tindahan-ni-Aling-Nena
-*Project Title*
-
- Tindahan ni Aling Nena
 
 # Project Description
 
