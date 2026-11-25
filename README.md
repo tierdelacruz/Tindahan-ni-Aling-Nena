@@ -104,6 +104,8 @@ Tindahan ni Aling Nena is a web-based store management application developed usi
 
   8. Arrays and Data Handling – Uses ArrayList, arrays, loops, and sorting to manage products, sales history, customers, and users.
 
+# UML Diagram
+
 <img width="7436" height="4140" alt="diagram" src="https://github.com/user-attachments/assets/0d944cbc-0fe3-4e77-9e99-84ac1ee18156" />
 
 # Team Members and Roles
